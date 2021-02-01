@@ -10,7 +10,7 @@ describe('Todo model', () => {
     Todos.reset()
   })
 
-  xdescribe('`listPeople` and `add`', () => {
+  describe('`listPeople` and `add`', () => {
     it('initially returns an empty array', () => {
       expect(Todos.listPeople()).to.eql([])
     })
@@ -29,7 +29,7 @@ describe('Todo model', () => {
     })
   })
 
-  xdescribe('`add` and `list`', () => {
+  describe('`add` and `list`', () => {
     it('remembers who does what', () => {
       Todos.add('zeke', { content: 'clean bath room' })
       expect(Todos.list('zeke')).to.have.length(1)
@@ -41,19 +41,19 @@ describe('Todo model', () => {
   })
 
   describe('`complete`', () => {
-    xit('is a boolean set to `false` for any new tasks', () => {
+    it('is a boolean set to `false` for any new tasks', () => {
       Todos.add('zeke', { content: 'clean self' })
       expect(Todos.list('zeke')[0].complete).to.be.false
     })
 
-    xit('respects a pre-existing completion status', () => {
+    it('respects a pre-existing completion status', () => {
       Todos.add('zeke', { content: 'clean self', complete: true })
       Todos.add('zeke', { content: 'clean the world', complete: false })
       expect(Todos.list('zeke')[0].complete).to.be.true
       expect(Todos.list('zeke')[1].complete).to.be.false
     })
 
-    xit("is a method that sets a specified task's `complete` property to true", () => {
+    it("is a method that sets a specified task's `complete` property to true", () => {
       Todos.add('zeke', { content: 'go to store' })
       Todos.add('zeke', { content: 'go to library' })
       Todos.add('zeke', { content: 'go to park' })
@@ -65,7 +65,7 @@ describe('Todo model', () => {
   })
 
   describe('`remove`', () => {
-    xit('removes a task, by index, for a given person', () => {
+    it('removes a task, by index, for a given person', () => {
       // set up a bunch of tasks
       for (var i = 0; i < 10; i++) Todos.add('zeke', { content: 'task ' + i })
       expect(Todos.list('zeke').length).to.equal(10)
